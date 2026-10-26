@@ -113,3 +113,14 @@ judul.pack(pady=20)
 input_frame = tk.Frame(root, bg="#f0f4f7")
 input_frame.pack(pady=10)
 
+# Input Nama Siswa
+tk.Label(
+    input_frame,
+    text="Nama Siswa:",
+    font=("Helvetica", 12),
+    bg="#f0f4f7",
+    anchor="w",
+).grid(row=0, column=0, sticky="w", pady=8, padx=10)
+entry_nama = tk.Entry(input_frame, width=25, font=("Helvetica", 12))
+entry_nama.grid(row=0, column=1, pady=8)
+
