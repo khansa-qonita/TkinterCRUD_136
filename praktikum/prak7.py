@@ -109,3 +109,7 @@ judul = tk.Label(
 )
 judul.pack(pady=20)
 
+# Frame untuk Input Form
+input_frame = tk.Frame(root, bg="#f0f4f7")
+input_frame.pack(pady=10)
+
