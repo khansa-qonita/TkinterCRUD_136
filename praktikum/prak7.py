@@ -27,4 +27,66 @@ def init_db():
   conn.commit()
   conn.close()
 
+# Fungsi untuk memproses prediksi dan menyimpan ke database
+def submit_data():
+  nama = entry_nama.get().strip()
+  bio_str = entry_biologi.get().strip()
+  fis_str = entry_fisika.get().strip()
+  ing_str = entry_inggris.get().strip()
+
+  # Validasi kolom kosong
+  if not nama or not bio_str or not fis_str or not ing_str:
+    messagebox.showwarning(
+        "Peringatan", "Semua kolom data dan nilai harus diisi!"
+    )
+    return
+
+  # Validasi input angka
+  try:
+    biologi = float(bio_str)
+    fisika = float(fis_str)
+    inggris = float(ing_str)
+  except ValueError:
+    messagebox.showerror(
+        "Error", "Nilai Biologi, Fisika, dan Inggris harus berupa angka!"
+    )
+    return
+
+  # Logika Penentuan Prediksi Berdasarkan Nilai Tertinggi
+  nilai_dict = {"Kedokteran": biologi, "Teknik": fisika, "Bahasa": inggris}
+
+  prediksi = max(nilai_dict, key=nilai_dict.get)
+
+  # Simpan Data ke SQLite
+  try:
+    conn = sqlite3.connect("prediksi_fakultas.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+            INSERT INTO nilai_siswa (nama_siswa, biologi, fisika, inggris, prediksi_fakultas)
+            VALUES (?, ?, ?, ?, ?)
+        """,
+        (nama, biologi, fisika, inggris, prediksi),
+    )
+    conn.commit()
+    conn.close()
+
+    # Tampilkan hasil prediksi ke GUI
+    label_hasil.config(
+        text=(
+            f"Siswa: {nama}\n Hasil Prediksi Fakultas: {prediksi}\n(Data"
+            " berhasil disimpan ke SQLite!)"
+        )
+    )
+    messagebox.showinfo("Sukses", "Data berhasil disimpan ke database!")
+
+    # Kosongkan form input setelah submit
+    entry_nama.delete(0, tk.END)
+    entry_biologi.delete(0, tk.END)
+    entry_fisika.delete(0, tk.END)
+    entry_inggris.delete(0, tk.END)
+
+  except Exception as e:
+    messagebox.showerror("Error Database", f"Terjadi kesalahan: {e}")
+
 
