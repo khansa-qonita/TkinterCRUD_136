@@ -169,3 +169,5 @@ submit_button = tk.Button(
     pady=5,
 )
 submit_button.pack(pady=15)
+
+root.mainloop()
