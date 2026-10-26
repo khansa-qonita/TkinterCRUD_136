@@ -93,3 +93,9 @@ def submit_data():
 # Panggil inisialisasi database saat program dijalankan
 init_db()
 
+# Konfigurasi Jendela Utama Tkinter
+root = tk.Tk()
+root.title("Aplikasi Prediksi Fakultas Pilihan")
+root.geometry("500x550")
+root.configure(bg="#f0f4f7")
+
