@@ -90,3 +90,6 @@ def submit_data():
     messagebox.showerror("Error Database", f"Terjadi kesalahan: {e}")
 
 
+# Panggil inisialisasi database saat program dijalankan
+init_db()
+
