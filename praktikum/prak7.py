@@ -157,3 +157,15 @@ tk.Label(
 entry_inggris = tk.Entry(input_frame, width=25, font=("Helvetica", 12))
 entry_inggris.grid(row=3, column=1, pady=8)
 
+# Button Submit
+submit_button = tk.Button(
+    root,
+    text="Submit Nilai",
+    command=submit_data,
+    font=("Helvetica", 12, "bold"),
+    bg="#28a745",
+    fg="white",
+    padx=10,
+    pady=5,
+)
+submit_button.pack(pady=15)
