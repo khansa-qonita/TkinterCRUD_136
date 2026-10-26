@@ -99,3 +99,13 @@ root.title("Aplikasi Prediksi Fakultas Pilihan")
 root.geometry("500x550")
 root.configure(bg="#f0f4f7")
 
+# Judul Aplikasi
+judul = tk.Label(
+    root,
+    text="Aplikasi Prediksi Fakultas",
+    font=("Helvetica", 18, "bold"),
+    bg="#f0f4f7",
+    fg="#333",
+)
+judul.pack(pady=20)
+
