@@ -170,4 +170,15 @@ submit_button = tk.Button(
 )
 submit_button.pack(pady=15)
 
+# Label untuk Menampilkan Hasil
+label_hasil = tk.Label(
+    root,
+    text="",
+    font=("Helvetica", 12, "italic"),
+    bg="#f0f4f7",
+    fg="blue",
+    justify="center",
+)
+label_hasil.pack(pady=10)
+
 root.mainloop()
